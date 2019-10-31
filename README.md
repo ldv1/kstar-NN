@@ -25,10 +25,10 @@ on a collection of datasets.
 
 ## Dependencies
 You will need python 3 with
-[numpy](http://www.numpy.org/).
+[numpy](http://www.numpy.org/)
+and [sklearn](http://scikit-learn.org/stable/).
 If you intend to run the tests, then
-[sklearn](http://scikit-learn.org/stable/),
-and [matplotlib](https://matplotlib.org/)
+[matplotlib](https://matplotlib.org/)
 must be installed.
 
 ## Code
