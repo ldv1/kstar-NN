@@ -7,7 +7,6 @@ class kstarnn(BaseEstimator, RegressorMixin):
         super().__init__()
         
         self.alpha = alpha
-        self.n_jobs = n_jobs
         self.copy_X_train = copy_X_train
         self.max_num_neighbors = max_num_neighbors
         
