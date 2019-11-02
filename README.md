@@ -21,7 +21,11 @@ for each data point whose value we wish to estimate.
 In this respect, k*-NN is data-adaptive.
 
 k*-NN was shown to beat the standard k-NN and the Nadarays-Watson estimator
-on a collection of datasets.
+on a collection of datasets. But it is not widespreadly used. Why?
+I believe the issue is that its performance degrades drastically in presence of irrelevant covariates.
+So, a preprocessing step is needed to select relevant features.
+In this respect, Random Forest works very well out-of-the-box and
+is robust to inclusion of irrelevant features.
 
 ## Dependencies
 You will need python 3 with
