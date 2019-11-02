@@ -1,14 +1,16 @@
 import numpy as np
 from sklearn.neighbors import KDTree
 from sklearn.base import BaseEstimator, RegressorMixin
+import sys
 
 class kstarnn(BaseEstimator, RegressorMixin):
-    def __init__(self, alpha = 1., max_num_neighbors = 30, copy_X_train=True):
+    def __init__(self, alpha = 1., max_num_neighbors = 30, copy_X_train=True, verbose = True):
         super().__init__()
         
         self.alpha = alpha
         self.copy_X_train = copy_X_train
         self.max_num_neighbors = max_num_neighbors
+        self.verbose = verbose
         
     def fit(self, X, y):
         self.tree = KDTree(X, leaf_size=20)
@@ -22,20 +24,20 @@ class kstarnn(BaseEstimator, RegressorMixin):
         
     def predict(self, X, return_ngbs = False):
         print_warning = True
-        Ntest = X.shape[0]
         
+        Ntest = X.shape[0]
         preds = np.zeros(Ntest)
         if return_ngbs:
             ngbs = []
         
         for n in range(Ntest):
-            dists, idx = self.tree.query(np.reshape(X[n,:],(-1,1)), k=self.max_num_neighbors)
+            dists, idx = self.tree.query(np.reshape(X[n,:],(1,-1)), k=self.max_num_neighbors)
             beta = self.alpha*dists[0]
             lbda = beta[0]+1
             k = 0
             while ( lbda > beta[k] ):
                 if k == self.max_num_neighbors-1:
-                    if print_warning:
+                    if print_warning and self.verbose:
                         print("too few neighbors! (using {}, alpha={})" \
                               .format(self.max_num_neighbors, self.alpha))
                         print_warning = False
