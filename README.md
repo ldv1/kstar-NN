@@ -79,6 +79,15 @@ Run `test.py` to produce the following:
 
 ![Demo](https://github.com/ldv1/kstar-NN/blob/master/test.png)
 
+Zero-mean Gaussian noise with stand deviation of 0.1 was added to the targets.
+
+Now we consider the same underlying sine function as a function of x_1, and add an irrelevant feature x_2.
+We plot the projection onto the covariate x_1:
+
+![Demo](https://github.com/ldv1/kstar-NN/blob/master/test_2D.png)
+
+Random Forest does a very good job whereas k*-NN performs poorly. 
+
 ## Authors
 Laurent de Vito
 
